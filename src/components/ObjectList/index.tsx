@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import objectApi from '../api/objectApi';
+import objectApi from '../../api/objectApi';
 
-const ObjectList: React.FC = () => {
+const ObjectList = () => {
   const [objects, setObjects] = useState<any>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);

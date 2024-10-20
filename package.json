@@ -2,7 +2,6 @@
   "name": "track-map",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://oleksandr-rohatnov.github.io/track-map/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -17,6 +16,7 @@
     "mobx-react-lite": "^4.0.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0",
     "react-scripts": "5.0.1",
     "sass": "^1.80.2",
     "typescript": "^4.9.5",
