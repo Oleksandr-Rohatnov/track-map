@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {getAuthKeyFromLocalStorage} from "../helpers/localStorage";
 
 const axiosClient = axios.create({
   baseURL: 'https://cryptic-tor-24415-deb5a0b018ba.herokuapp.com/api',
@@ -6,9 +7,9 @@ const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.request.use((config) => {
-  const authKey = localStorage.getItem('authKey');
+  const authKey = getAuthKeyFromLocalStorage();
   if (authKey) {
-    config.headers['Authorization'] = `Bearer ${authKey}`;
+    config.headers['Authorization'] = authKey;
   }
   return config;
 }, (error) => {

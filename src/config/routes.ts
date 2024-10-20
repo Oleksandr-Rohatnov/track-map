@@ -6,6 +6,7 @@ export type RouteT = {
   id: number;
   path: string;
   element: () => JSX.Element;
+  isLayoutEnabled: boolean;
 };
 
 export const routes: RouteT[] = [
@@ -13,11 +14,13 @@ export const routes: RouteT[] = [
     id: 1,
     path: '/',
     element: ObjectList,
+    isLayoutEnabled: true,
   },
   {
     id: 2,
     path: '/login',
     element: Login,
+    isLayoutEnabled: false,
   },
 ];
 

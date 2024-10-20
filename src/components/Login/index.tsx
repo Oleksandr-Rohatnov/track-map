@@ -1,23 +1,34 @@
 import { Formik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TextField, Button, Typography, Container } from '@mui/material';
-import objectApi from '../../api/objectApi';
 import classes from "./Login.module.scss";
+import { observer } from "mobx-react-lite";
+import store from '../../store/store';
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = observer(() => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    store.logout();
+  }, []);
+
   return (
     <Container maxWidth="xs" className={classes.container}>
-      <img src="/logo.svg" alt="image" width={100} className={classes.logo}/>
+      <img src="/logo.svg" alt="image" width={100} className={classes.logo} />
       <Typography variant="h4" align="center" gutterBottom component="h1">
         Login
       </Typography>
       <Formik
-        initialValues={{key: ''}}
-        onSubmit={(values, {setSubmitting}) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        initialValues={{ key: '' }}
+        onSubmit={async ({ key }, { setSubmitting, setFieldError }) => {
+          const isSuccess = await store.login(key);
+          setSubmitting(false);
+          if (isSuccess) {
+            navigate('/');
+          } else {
+            setFieldError('key', 'Invalid key')
+          }
         }}
       >
         {({
@@ -58,6 +69,6 @@ const Login = () => {
       </Formik>
     </Container>
   );
-};
+});
 
 export default Login;

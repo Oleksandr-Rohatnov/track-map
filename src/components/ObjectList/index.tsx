@@ -1,44 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import objectApi from '../../api/objectApi';
+import {useNavigate} from "react-router-dom";
+import {getAuthKeyFromLocalStorage} from "../../helpers/localStorage";
+import {observer} from "mobx-react-lite";
+import store from "../../store/store";
 
-const ObjectList = () => {
-  const [objects, setObjects] = useState<any>(undefined);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+const ObjectList = observer(() => {
+  const navigate = useNavigate();
+  const authKeyFromLocalStorage = getAuthKeyFromLocalStorage();
 
-  // Окрема функція для отримання об'єктів
-  const fetchObjects = async () => {
-    try {
-      setLoading(true);
-      const response = await objectApi.getObjects();
-      setObjects(response.data);
-    } catch {
-      setError('Error fetching objects');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Виклик функції всередині useEffect
   useEffect(() => {
-    fetchObjects();
+    if (!authKeyFromLocalStorage) {
+      navigate("/login");
+    }
+  }, [authKeyFromLocalStorage, navigate]);
+
+  useEffect(() => {
+    store.getObjects();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  console.log(store.objects)
 
   return (
     <div>
       <h1>Object List</h1>
       <ul>
-        {objects?.map((obj: any) => (
-          <li key={obj.id}>
-            ID: {obj.id}, Coordinates: ({obj.coordinates.lat}, {obj.coordinates.lng})
-          </li>
-        ))}
+        {/*{objects?.map((obj: any) => (*/}
+        {/*  <li key={obj.id}>*/}
+        {/*    ID: {obj.id}, Coordinates: ({obj.coordinates.lat}, {obj.coordinates.lng})*/}
+        {/*  </li>*/}
+        {/*))}*/}
       </ul>
     </div>
   );
-};
+});
 
 export default ObjectList;

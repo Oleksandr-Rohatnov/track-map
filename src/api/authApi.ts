@@ -1,8 +1,12 @@
 import axiosClient from './axiosClient';
 
 const authApi = {
-  login: (authKey: string) => {
-    return axiosClient.post('/auth', { authKey });
+  login: async (authKey: string) => {
+    return await axiosClient.post('/auth', null, {
+      headers: {
+        'Authorization': authKey,
+      },
+    });
   },
 };
 
