@@ -17,7 +17,10 @@ const Login = observer(() => {
   return (
     <Container maxWidth="xs" className={classes.container}>
       <img src="/logo.svg" alt="image" width={100} className={classes.logo} />
-      <Typography variant="h4" align="center" gutterBottom component="h1">
+      <Typography color="#00648d" variant="h5" fontWeight="bolder" align="center" mb={8} gutterBottom component="text">
+        Track Map
+      </Typography>
+      <Typography color="#00648d" fontWeight="bolder" variant="h4" align="center" gutterBottom component="h1">
         Login
       </Typography>
       <Formik

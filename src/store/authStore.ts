@@ -7,7 +7,6 @@ export class AuthStore {
 
   constructor() {
     makeAutoObservable(this);
-    this.authKey = '';
   }
 
   setAuthKey(key: string) {

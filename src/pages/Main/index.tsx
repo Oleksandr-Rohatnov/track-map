@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuthKeyFromLocalStorage } from '../../helpers/localStorage';
 import { observer } from 'mobx-react-lite';
 import store from '../../store';
 import Header from '../../components/Header';
+import Map from '../../components/Map';
 
 const Main = observer(() => {
-  const { objectStore} = store;
+  const { objectStore, authStore } = store;
   const navigate = useNavigate();
   const authKeyFromLocalStorage = getAuthKeyFromLocalStorage();
 
   useEffect(() => {
-    if (!authKeyFromLocalStorage) {
+    if (!authKeyFromLocalStorage && !authStore.authKey) {
       navigate("/login");
     }
-  }, [authKeyFromLocalStorage, navigate]);
+  }, [authKeyFromLocalStorage, navigate, authStore.authKey]);
 
   useEffect(() => {
     objectStore.getObjects();
@@ -25,14 +26,7 @@ const Main = observer(() => {
   return (
     <>
       <Header/>
-      <h1>Object List</h1>
-      <ul>
-        {/*{objects?.map((obj: any) => (*/}
-        {/*  <li key={obj.id}>*/}
-        {/*    ID: {obj.id}, Coordinates: ({obj.coordinates.lat}, {obj.coordinates.lng})*/}
-        {/*  </li>*/}
-        {/*))}*/}
-      </ul>
+      <Map/>
     </>
   );
 });

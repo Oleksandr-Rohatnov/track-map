@@ -6,7 +6,6 @@ export class ObjectStore {
 
   constructor() {
     makeAutoObservable(this);
-    this.objects = undefined;
   }
 
   async getObjects() {
