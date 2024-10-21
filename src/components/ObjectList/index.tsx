@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {useNavigate} from "react-router-dom";
-import {getAuthKeyFromLocalStorage} from "../../helpers/localStorage";
-import {observer} from "mobx-react-lite";
-import store from "../../store/store";
+import { useNavigate } from 'react-router-dom';
+import { getAuthKeyFromLocalStorage } from '../../helpers/localStorage';
+import { observer } from 'mobx-react-lite';
+import store from '../../store/store';
 
 const ObjectList = observer(() => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const ObjectList = observer(() => {
     store.getObjects();
   }, []);
 
-  console.log(store.objects)
+  console.log(store.objects);
 
   return (
     <div>

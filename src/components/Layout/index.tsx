@@ -1,6 +1,6 @@
-import React from 'react'
-import classes from './Layout.module.scss'
-import { useLocation } from "react-router-dom";
+import React from 'react';
+import classes from './Layout.module.scss';
+import { useLocation } from 'react-router-dom';
 
 export const Layout = ({ children }: React.PropsWithChildren) => {
   const location = useLocation();
@@ -10,5 +10,5 @@ export const Layout = ({ children }: React.PropsWithChildren) => {
       {!isLoginPage && <div>Header</div>}
       {children}
     </div>
-  )
-}
+  );
+};

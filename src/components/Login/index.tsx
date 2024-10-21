@@ -1,10 +1,10 @@
 import { Formik } from 'formik';
 import React, { useEffect } from 'react';
 import { TextField, Button, Typography, Container } from '@mui/material';
-import classes from "./Login.module.scss";
-import { observer } from "mobx-react-lite";
+import classes from './Login.module.scss';
+import { observer } from 'mobx-react-lite';
 import store from '../../store/store';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const Login = observer(() => {
   const navigate = useNavigate();
@@ -27,19 +27,11 @@ const Login = observer(() => {
           if (isSuccess) {
             navigate('/');
           } else {
-            setFieldError('key', 'Invalid key')
+            setFieldError('key', 'Invalid key');
           }
         }}
       >
-        {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-          }) => (
+        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
           <form onSubmit={handleSubmit}>
             <TextField
               required

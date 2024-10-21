@@ -4,10 +4,10 @@ const authApi = {
   login: async (authKey: string) => {
     return await axiosClient.post('/auth', null, {
       headers: {
-        'Authorization': authKey,
-      },
+        Authorization: authKey
+      }
     });
-  },
+  }
 };
 
 export default authApi;

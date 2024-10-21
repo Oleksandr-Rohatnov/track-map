@@ -1,7 +1,7 @@
-import {makeAutoObservable} from "mobx";
-import {removeAuthKeyFromLocalStorage, setAuthKeyToLocalStorage} from "../helpers/localStorage";
-import authApi from "../api/authApi";
-import objectApi from "../api/objectApi";
+import { makeAutoObservable } from 'mobx';
+import { removeAuthKeyFromLocalStorage, setAuthKeyToLocalStorage } from '../helpers/localStorage';
+import authApi from '../api/authApi';
+import objectApi from '../api/objectApi';
 
 class store {
   authKey?: string;
@@ -45,7 +45,6 @@ class store {
     removeAuthKeyFromLocalStorage();
     this.authKey = undefined;
   }
-
 }
 
 export default new store();
