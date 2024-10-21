@@ -15,7 +15,7 @@ const Header = observer(() => {
   return (
     <header className={classes.root}>
       <div className={classes.leftContainer}>
-        <img src="/logo.svg" alt="image" width={32} className={classes.logo} />
+        <img src={`${process.env.PUBLIC_URL}/logo.svg`} alt="image" width={32} className={classes.logo} />
         <Typography
           color="#00648d"
           variant="h5"

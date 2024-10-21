@@ -16,7 +16,7 @@ const Login = observer(() => {
 
   return (
     <Container maxWidth="xs" className={classes.container}>
-      <img src="/logo.svg" alt="image" width={100} className={classes.logo} />
+      <img src={`${process.env.PUBLIC_URL}/logo.svg`} alt="image" width={100} className={classes.logo} />
       <Typography color="#00648d" variant="h5" fontWeight="bolder" align="center" mb={8} gutterBottom component="text">
         Track Map
       </Typography>
