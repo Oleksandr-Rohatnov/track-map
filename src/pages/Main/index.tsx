@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuthKeyFromLocalStorage } from '../../helpers/localStorage';
 import { observer } from 'mobx-react-lite';
-import store from '../../store/store';
+import store from '../../store';
+import Header from '../../components/Header';
 
-const ObjectList = observer(() => {
+const Main = observer(() => {
+  const { objectStore} = store;
   const navigate = useNavigate();
   const authKeyFromLocalStorage = getAuthKeyFromLocalStorage();
 
@@ -15,13 +17,14 @@ const ObjectList = observer(() => {
   }, [authKeyFromLocalStorage, navigate]);
 
   useEffect(() => {
-    store.getObjects();
+    objectStore.getObjects();
   }, []);
 
-  console.log(store.objects);
+  // console.log(objectStore.objects);
 
   return (
-    <div>
+    <>
+      <Header/>
       <h1>Object List</h1>
       <ul>
         {/*{objects?.map((obj: any) => (*/}
@@ -30,8 +33,8 @@ const ObjectList = observer(() => {
         {/*  </li>*/}
         {/*))}*/}
       </ul>
-    </div>
+    </>
   );
 });
 
-export default ObjectList;
+export default Main;

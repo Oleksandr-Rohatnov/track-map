@@ -1,6 +1,6 @@
-import React, { JSX } from 'react';
-import ObjectList from '../components/ObjectList';
-import Login from '../components/Login';
+import { JSX } from 'react';
+import Main from '../pages/Main';
+import Login from '../pages/Login';
 
 export type RouteT = {
   id: number;
@@ -13,7 +13,7 @@ export const routes: RouteT[] = [
   {
     id: 1,
     path: '/',
-    element: ObjectList,
+    element: Main,
     isLayoutEnabled: true
   },
   {

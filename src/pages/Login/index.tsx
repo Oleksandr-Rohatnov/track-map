@@ -3,14 +3,15 @@ import React, { useEffect } from 'react';
 import { TextField, Button, Typography, Container } from '@mui/material';
 import classes from './Login.module.scss';
 import { observer } from 'mobx-react-lite';
-import store from '../../store/store';
+import store from '../../store';
 import { useNavigate } from 'react-router-dom';
 
 const Login = observer(() => {
   const navigate = useNavigate();
+  const { authStore } = store
 
   useEffect(() => {
-    store.logout();
+    authStore.logout();
   }, []);
 
   return (
@@ -22,7 +23,7 @@ const Login = observer(() => {
       <Formik
         initialValues={{ key: '' }}
         onSubmit={async ({ key }, { setSubmitting, setFieldError }) => {
-          const isSuccess = await store.login(key);
+          const isSuccess = await authStore.login(key);
           setSubmitting(false);
           if (isSuccess) {
             navigate('/');
